@@ -1,0 +1,3 @@
+[submodule "Asaurus/vendor/spdlog"]
+	path = Asaurus/vendor/spdlog
+	url = https://github.com/gabime/spdlog

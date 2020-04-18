@@ -4,7 +4,7 @@
 
 namespace Asaurus
 {
-	class Asaurus_API Application
+	class ASAURUS_API Application
 	{
 	public:
 
