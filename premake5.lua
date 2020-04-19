@@ -17,6 +17,9 @@ project "Asaurus"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "aspch.h"
+	pchsource "%{prj.name}/src/aspch.cpp"
+
 	files
 	{ 
 		"%{prj.name}/src/**.h",

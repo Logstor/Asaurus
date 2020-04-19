@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Asaurus
 {
 	class ASAURUS_API MouseMovedEvent : public Event

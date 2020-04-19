@@ -34,6 +34,7 @@
     <ClInclude Include="src\Asaurus\Log.h">
       <Filter>Asaurus</Filter>
     </ClInclude>
+    <ClInclude Include="src\aspch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Asaurus\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Asaurus\Log.cpp">
       <Filter>Asaurus</Filter>
     </ClCompile>
+    <ClCompile Include="src\aspch.cpp" />
   </ItemGroup>
 </Project>

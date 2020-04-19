@@ -2,9 +2,6 @@
 
 #include "Asaurus/Core.h"
 
-#include <string>
-#include <functional>
-
 namespace Asaurus
 {
 	/*
