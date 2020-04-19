@@ -1,24 +1,26 @@
 #include "aspch.h"
 #include "Application.h"
-#include "Events/ApplicationEvent.h"
-#include "Log.h"
+#include "Asaurus/Events/ApplicationEvent.h"
+#include "Asaurus/Log.h"
+#include "Window.h"
 
 namespace Asaurus
 {
-	Asaurus::Application::Application()
+	Application::Application()
 	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
-	Asaurus::Application::~Application()
+	Application::~Application()
 	{
 	}
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-		AS_TRACE(e);
-
-		std::getchar();
+		while (m_Running)
+		{
+			m_Window->OnUpdate();
+		}
 	}
 }
 

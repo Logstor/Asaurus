@@ -9,6 +9,13 @@ workspace "Asaurus"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder
+IncludeDir = {}
+IncludeDir["GLFW"] = "Asaurus/vendor/GLFW/include"
+
+-- Include GLFW Project premake5.lua file
+include "Asaurus/vendor/GLFW"
+
 project "Asaurus"
 	location "Asaurus"
 	kind "SharedLib"
@@ -29,7 +36,13 @@ project "Asaurus"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW"
 	}
 
 	filter "system:windows"

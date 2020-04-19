@@ -7,6 +7,12 @@
     <Filter Include="Asaurus\Events">
       <UniqueIdentifier>{2DAC9735-197A-8B3B-020E-FC61EE7A67A0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Asaurus.h" />
@@ -34,6 +40,12 @@
     <ClInclude Include="src\Asaurus\Log.h">
       <Filter>Asaurus</Filter>
     </ClInclude>
+    <ClInclude Include="src\Asaurus\Window.h">
+      <Filter>Asaurus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\aspch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="src\Asaurus\Log.cpp">
       <Filter>Asaurus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\aspch.cpp" />
   </ItemGroup>
