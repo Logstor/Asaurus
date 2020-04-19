@@ -1,5 +1,5 @@
 workspace "Asaurus"
-	architecture "x64"
+	architecture "x86_64"
 	configurations
 	{
 		"Debug", 
@@ -25,6 +25,7 @@ project "Asaurus"
 
 	includedirs
 	{
+		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 

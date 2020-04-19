@@ -4,6 +4,9 @@
     <Filter Include="Asaurus">
       <UniqueIdentifier>{69B0A7A2-D58F-263E-DEA7-B1144A068D9F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Asaurus\Events">
+      <UniqueIdentifier>{2DAC9735-197A-8B3B-020E-FC61EE7A67A0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Asaurus.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Asaurus\EntryPoint.h">
       <Filter>Asaurus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Asaurus\Events\ApplicationEvent.h">
+      <Filter>Asaurus\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Asaurus\Events\Event.h">
+      <Filter>Asaurus\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Asaurus\Events\KeyEvent.h">
+      <Filter>Asaurus\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Asaurus\Events\MouseEvent.h">
+      <Filter>Asaurus\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Asaurus\Log.h">
       <Filter>Asaurus</Filter>

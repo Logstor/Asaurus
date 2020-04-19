@@ -12,10 +12,10 @@ int main(int argc, char** argv)
 	AS_INFO("INFO");
 	AS_WARN("WARNING");
 	AS_CORE_ERROR("ERROR");
-	AS_CRIT("CRITICAL Var={0}", 10);
+	AS_CRIT("CRITICAL");
 
 
-
+	// Create client application and run
 	auto app = Asaurus::CreateApplication();
 	app->Run();
 	delete app;
