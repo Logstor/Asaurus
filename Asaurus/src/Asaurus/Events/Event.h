@@ -1,5 +1,6 @@
 #pragma once
 
+#include "aspch.h"
 #include "Asaurus/Core.h"
 
 namespace Asaurus
