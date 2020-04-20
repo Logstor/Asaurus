@@ -13,10 +13,12 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "Asaurus/vendor/GLFW/include"
 IncludeDir["Glad"] = "Asaurus/vendor/Glad/include"
+IncludeDir["ImGui"] = "Asaurus/vendor/imgui"
 
--- Include GLFW Project premake5.lua file
+-- Include other Projects premake5.lua file
 include "Asaurus/vendor/GLFW"
 include "Asaurus/vendor/Glad"
+include "Asaurus/vendor/imgui"
 
 project "Asaurus"
 	location "Asaurus"
@@ -40,13 +42,15 @@ project "Asaurus"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

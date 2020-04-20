@@ -7,8 +7,14 @@
     <Filter Include="Asaurus\Events">
       <UniqueIdentifier>{2DAC9735-197A-8B3B-020E-FC61EE7A67A0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Asaurus\ImGui">
+      <UniqueIdentifier>{531057D3-BFD0-D209-880B-1C87F48A17E6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
@@ -37,6 +43,9 @@
     <ClInclude Include="src\Asaurus\Events\MouseEvent.h">
       <Filter>Asaurus\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Asaurus\ImGui\ImGuiLayer.h">
+      <Filter>Asaurus\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Asaurus\Layer.h">
       <Filter>Asaurus</Filter>
     </ClInclude>
@@ -49,6 +58,9 @@
     <ClInclude Include="src\Asaurus\Window.h">
       <Filter>Asaurus</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
     </ClInclude>
@@ -58,6 +70,9 @@
     <ClCompile Include="src\Asaurus\Application.cpp">
       <Filter>Asaurus</Filter>
     </ClCompile>
+    <ClCompile Include="src\Asaurus\ImGui\ImGuiLayer.cpp">
+      <Filter>Asaurus\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Asaurus\Layer.cpp">
       <Filter>Asaurus</Filter>
     </ClCompile>
@@ -66,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="src\Asaurus\Log.cpp">
       <Filter>Asaurus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>

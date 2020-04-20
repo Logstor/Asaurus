@@ -4,3 +4,6 @@
 [submodule "Asaurus/vendor/GLFW"]
 	path = Asaurus/vendor/GLFW
 	url = https://github.com/Logstor/glfw
+[submodule "Asaurus/vendor/imgui"]
+	path = Asaurus/vendor/imgui
+	url = https://github.com/TheCherno/imgui
