@@ -3,6 +3,7 @@
 #include "Asaurus/Events/ApplicationEvent.h"
 #include "Asaurus/Events/KeyEvent.h"
 #include "Asaurus/Events/MouseEvent.h"
+#include "glad/glad.h"
 
 
 namespace Asaurus
@@ -49,8 +50,14 @@ namespace Asaurus
 			s_GLFWInitialized = true;
 		}
 
+		// Create GLFW window
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+
+		// Initialize Glad
+		int statusGlad = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		AS_CORE_ASSERT(statusGlad, "Failed to initialize Glad!");
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

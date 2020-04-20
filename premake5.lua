@@ -58,7 +58,8 @@ project "Asaurus"
 		defines
 		{
 			"AS_PLATFORM_WINDOWS",
-			"AS_BUILD_DLL"
+			"AS_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
