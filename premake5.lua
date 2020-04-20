@@ -12,9 +12,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder
 IncludeDir = {}
 IncludeDir["GLFW"] = "Asaurus/vendor/GLFW/include"
+IncludeDir["Glad"] = "Asaurus/vendor/Glad/include"
 
 -- Include GLFW Project premake5.lua file
 include "Asaurus/vendor/GLFW"
+include "Asaurus/vendor/Glad"
 
 project "Asaurus"
 	location "Asaurus"
@@ -37,12 +39,14 @@ project "Asaurus"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -64,14 +68,18 @@ project "Asaurus"
 
 	filter "configurations:Debug"
 		defines { "AS_DEBUG", "DEBUG" }
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines { "AS_RELEASE", "RELEASE" }
+		buildoptions "/MD"
+
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines { "AS_DIST", "RELEASE" }
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -111,12 +119,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines { "AS_DEBUG", "DEBUG" }
+		buildoptions "/MDd"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines { "AS_RELEASE", "RELEASE" }
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines { "AS_DIST", "RELEASE" }
+		buildoptions "/MD"
 		optimize "On"

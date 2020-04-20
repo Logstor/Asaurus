@@ -37,6 +37,12 @@
     <ClInclude Include="src\Asaurus\Events\MouseEvent.h">
       <Filter>Asaurus\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Asaurus\Layer.h">
+      <Filter>Asaurus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Asaurus\LayerStack.h">
+      <Filter>Asaurus</Filter>
+    </ClInclude>
     <ClInclude Include="src\Asaurus\Log.h">
       <Filter>Asaurus</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Asaurus\Application.cpp">
+      <Filter>Asaurus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Asaurus\Layer.cpp">
+      <Filter>Asaurus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Asaurus\LayerStack.cpp">
       <Filter>Asaurus</Filter>
     </ClCompile>
     <ClCompile Include="src\Asaurus\Log.cpp">
