@@ -1,5 +1,7 @@
 workspace "Asaurus"
 	architecture "x86_64"
+	-- Make sure the Sandbox application is the startup application always
+	startproject "Sandbox"
 	configurations
 	{
 		"Debug", 
@@ -16,14 +18,21 @@ IncludeDir["Glad"] = "Asaurus/vendor/Glad/include"
 IncludeDir["ImGui"] = "Asaurus/vendor/imgui"
 
 -- Include other Projects premake5.lua file
-include "Asaurus/vendor/GLFW"
-include "Asaurus/vendor/Glad"
-include "Asaurus/vendor/imgui"
+group "Dependencies"
+
+	include "Asaurus/vendor/GLFW"
+	include "Asaurus/vendor/Glad"
+	include "Asaurus/vendor/imgui"
+
+group ""
+
+
 
 project "Asaurus"
 	location "Asaurus"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -56,7 +65,6 @@ project "Asaurus"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 		
 		defines
@@ -68,29 +76,30 @@ project "Asaurus"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
-		defines { "AS_DEBUG", "DEBUG" }
-		buildoptions "/MDd"
+		defines { "AS_ENABLE_ASSERTS", "AS_DEBUG", "DEBUG" }
+		runtime "Debug"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines { "AS_RELEASE", "RELEASE" }
-		buildoptions "/MD"
+		runtime "Release"
 
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines { "AS_DIST", "RELEASE" }
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -114,7 +123,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 		
 		defines
@@ -124,15 +132,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines { "AS_DEBUG", "DEBUG" }
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 	
 	filter "configurations:Release"
 		defines { "AS_RELEASE", "RELEASE" }
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines { "AS_DIST", "RELEASE" }
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
