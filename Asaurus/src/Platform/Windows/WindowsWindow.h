@@ -22,6 +22,13 @@ namespace Asaurus
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 
+		/*! @brief Returns the native window as a void* to be platform
+		 *	independent.
+		 *	
+		 *	@return void* to the native window.
+		 */
+		inline virtual void* GetNativeWindow() const override { return m_Window; };
+
 	private:
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();

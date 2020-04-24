@@ -158,11 +158,13 @@
     <ClInclude Include="src\Asaurus\Events\KeyEvent.h" />
     <ClInclude Include="src\Asaurus\Events\MouseEvent.h" />
     <ClInclude Include="src\Asaurus\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Asaurus\Input.h" />
     <ClInclude Include="src\Asaurus\Layer.h" />
     <ClInclude Include="src\Asaurus\LayerStack.h" />
     <ClInclude Include="src\Asaurus\Log.h" />
     <ClInclude Include="src\Asaurus\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\aspch.h" />
   </ItemGroup>
@@ -173,6 +175,7 @@
     <ClCompile Include="src\Asaurus\LayerStack.cpp" />
     <ClCompile Include="src\Asaurus\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\aspch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
