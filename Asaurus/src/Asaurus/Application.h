@@ -6,6 +6,8 @@
 #include "Asaurus/Events/ApplicationEvent.h"
 #include "Window.h"
 
+#include "Asaurus/ImGui/ImGuiLayer.h"
+
 namespace Asaurus
 {
 	class ASAURUS_API Application
@@ -28,6 +30,8 @@ namespace Asaurus
 
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+
+		ImGuiLayer* m_ImGuiLayer;
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 		LayerStack m_LayerStack;

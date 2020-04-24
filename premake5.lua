@@ -118,6 +118,7 @@ project "Sandbox"
 	{
 		"Asaurus/vendor/spdlog/include",
 		"Asaurus/src",
+		"Asaurus/vendor",
 		"%{IncludeDir.glm}"
 	}
 
