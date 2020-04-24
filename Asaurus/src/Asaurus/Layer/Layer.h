@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Core.h"
-#include "Events/Event.h"
+#include "Asaurus/Core.h"
+#include "Asaurus/Events/Event.h"
 
 namespace Asaurus
 {

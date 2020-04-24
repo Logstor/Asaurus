@@ -7,12 +7,13 @@ public:
 
 	void OnUpdate() override
 	{
-		AS_INFO("ExampleLayer:: Update");
+		if (Asaurus::Input::IsKeyPressed(AS_KEY_TAB))
+			AS_TRACE("Tab key pressed!");
 	}
 
 	void OnEvent(Asaurus::Event& event) override
 	{
-		AS_TRACE("{0}", event);
+		// AS_TRACE("{0}", event);
 	}
 };
 

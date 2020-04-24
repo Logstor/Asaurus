@@ -4,7 +4,6 @@
 
 //REMOVE
 #include "glad/glad.h"
-#include "Input.h"
 
 namespace Asaurus
 {
@@ -60,10 +59,6 @@ namespace Asaurus
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
-
-			//REMOVE
-			auto [x, y] = Input::GetMousePosition();
-			AS_CORE_TRACE("MousePosition: {0}, {1}", x, y);
 
 			m_Window->OnUpdate();
 		}

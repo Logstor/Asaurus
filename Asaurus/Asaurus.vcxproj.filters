@@ -46,12 +46,6 @@
     <ClInclude Include="src\Asaurus\ImGui\ImGuiLayer.h">
       <Filter>Asaurus\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Asaurus\Layer.h">
-      <Filter>Asaurus</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Asaurus\LayerStack.h">
-      <Filter>Asaurus</Filter>
-    </ClInclude>
     <ClInclude Include="src\Asaurus\Log.h">
       <Filter>Asaurus</Filter>
     </ClInclude>
@@ -67,6 +61,14 @@
     <ClInclude Include="src\aspch.h" />
     <ClInclude Include="src\Asaurus\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Asaurus\KeyCodes.h" />
+    <ClInclude Include="src\Asaurus\MouseButtonCodes.h" />
+    <ClInclude Include="src\Asaurus\Layer\Layer.h">
+      <Filter>Asaurus</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Asaurus\Layer\LayerStack.h">
+      <Filter>Asaurus</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Asaurus\Application.cpp">
@@ -74,12 +76,6 @@
     </ClCompile>
     <ClCompile Include="src\Asaurus\ImGui\ImGuiLayer.cpp">
       <Filter>Asaurus\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Asaurus\Layer.cpp">
-      <Filter>Asaurus</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Asaurus\LayerStack.cpp">
-      <Filter>Asaurus</Filter>
     </ClCompile>
     <ClCompile Include="src\Asaurus\Log.cpp">
       <Filter>Asaurus</Filter>
@@ -92,5 +88,11 @@
     </ClCompile>
     <ClCompile Include="src\aspch.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Asaurus\Layer\Layer.cpp">
+      <Filter>Asaurus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Asaurus\Layer\LayerStack.cpp">
+      <Filter>Asaurus</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

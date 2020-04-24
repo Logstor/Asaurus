@@ -159,9 +159,11 @@
     <ClInclude Include="src\Asaurus\Events\MouseEvent.h" />
     <ClInclude Include="src\Asaurus\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Asaurus\Input.h" />
-    <ClInclude Include="src\Asaurus\Layer.h" />
-    <ClInclude Include="src\Asaurus\LayerStack.h" />
+    <ClInclude Include="src\Asaurus\KeyCodes.h" />
+    <ClInclude Include="src\Asaurus\Layer\Layer.h" />
+    <ClInclude Include="src\Asaurus\Layer\LayerStack.h" />
     <ClInclude Include="src\Asaurus\Log.h" />
+    <ClInclude Include="src\Asaurus\MouseButtonCodes.h" />
     <ClInclude Include="src\Asaurus\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
@@ -171,8 +173,8 @@
   <ItemGroup>
     <ClCompile Include="src\Asaurus\Application.cpp" />
     <ClCompile Include="src\Asaurus\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Asaurus\Layer.cpp" />
-    <ClCompile Include="src\Asaurus\LayerStack.cpp" />
+    <ClCompile Include="src\Asaurus\Layer\Layer.cpp" />
+    <ClCompile Include="src\Asaurus\Layer\LayerStack.cpp" />
     <ClCompile Include="src\Asaurus\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
