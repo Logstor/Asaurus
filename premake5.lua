@@ -7,7 +7,7 @@ workspace "Asaurus"
 		"Debug", 
 		"Release",
 		"Dist"
-	}
+	}	
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -31,9 +31,10 @@ group ""
 
 project "Asaurus"
 	location "Asaurus"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -47,6 +48,11 @@ project "Asaurus"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
+	}
+
+	defines
+	{
+		"CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -68,19 +74,12 @@ project "Asaurus"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 		
 		defines
 		{
 			"AS_PLATFORM_WINDOWS",
-			"AS_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
@@ -91,7 +90,6 @@ project "Asaurus"
 	filter "configurations:Release"
 		defines { "AS_RELEASE", "RELEASE" }
 		runtime "Release"
-
 		optimize "On"
 
 	filter "configurations:Dist"
@@ -103,7 +101,8 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -128,7 +127,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 		
 		defines

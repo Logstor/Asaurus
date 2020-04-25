@@ -22,21 +22,18 @@ project "Glad"
 		pic "On"
 
 		systemversion "latest"
-		staticruntime "On"
 
 
 	filter "system:windows"
 		systemversion "latest"
-		staticruntime "On"
 
 
 	filter "configurations:Debug"
+		defines { "DEBUG" }
 		runtime "Debug"
 		symbols "on"
-
+	
 	filter "configurations:Release"
+		defines { "RELEASE" }
 		runtime "Release"
 		optimize "on"
-
-	filter { "system:windows", "configurations:Release" }
-		buildoptions "/MT"
