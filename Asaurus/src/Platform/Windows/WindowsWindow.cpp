@@ -1,10 +1,9 @@
 #include "aspch.h"
 #include "WindowsWindow.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 #include "Asaurus/Events/ApplicationEvent.h"
 #include "Asaurus/Events/KeyEvent.h"
 #include "Asaurus/Events/MouseEvent.h"
-#include "glad/glad.h"
-
 
 namespace Asaurus
 {
@@ -37,7 +36,9 @@ namespace Asaurus
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
+
 		AS_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
+
 
 		if (!s_GLFWInitialized)
 		{
@@ -52,16 +53,48 @@ namespace Asaurus
 
 		// Create GLFW window
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
 
-		// Initialize Glad
-		int statusGlad = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		AS_CORE_ASSERT(statusGlad, "Failed to initialize Glad!");
+		// Create Rendering context
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
 		// Set GLFW callbacks
+		InitializeGLFWCallbacks();
+	}
+
+
+	void WindowsWindow::Shutdown()
+	{
+		glfwDestroyWindow(m_Window);
+	}
+
+	void WindowsWindow::OnUpdate()
+	{
+		glfwPollEvents();
+		m_Context->SwapBuffers();
+	}
+
+	void WindowsWindow::SetVSync(bool enabled)
+	{
+		if (enabled)
+			glfwSwapInterval(1);
+		else
+			glfwSwapInterval(0);
+
+		m_Data.VSync = enabled;
+	}
+
+	bool WindowsWindow::IsVSync() const
+	{
+		return m_Data.VSync;
+	}
+
+	////////////////// Helpers //////////////////
+	inline void WindowsWindow::InitializeGLFWCallbacks()
+	{
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -71,7 +104,7 @@ namespace Asaurus
 
 				WindowResizeEvent event(width, height);
 				data.EventCallback(event);
-				
+
 			});
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)
@@ -81,7 +114,7 @@ namespace Asaurus
 				data.EventCallback(event);
 			});
 
-		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods) 
+		glfwSetKeyCallback(m_Window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
@@ -164,31 +197,4 @@ namespace Asaurus
 				data.EventCallback(e);
 			});
 	}
-
-	void WindowsWindow::Shutdown()
-	{
-		glfwDestroyWindow(m_Window);
-	}
-
-	void WindowsWindow::OnUpdate()
-	{
-		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
-	}
-
-	void WindowsWindow::SetVSync(bool enabled)
-	{
-		if (enabled)
-			glfwSwapInterval(1);
-		else
-			glfwSwapInterval(0);
-
-		m_Data.VSync = enabled;
-	}
-
-	bool WindowsWindow::IsVSync() const
-	{
-		return m_Data.VSync;
-	}
-
 }

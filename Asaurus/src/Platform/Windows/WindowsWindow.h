@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Asaurus/Window.h"
+#include "Asaurus/Renderer/GraphicsContext.h"
 
 #include "GLFW/glfw3.h"
 
@@ -33,7 +34,11 @@ namespace Asaurus
 		virtual void Init(const WindowProps& props);
 		virtual void Shutdown();
 
+		// Helper
+		inline void InitializeGLFWCallbacks();
+
 	private:
+		GraphicsContext* m_Context;
 		GLFWwindow* m_Window;
 
 		struct WindowData
