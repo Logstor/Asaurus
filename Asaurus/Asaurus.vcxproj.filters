@@ -1328,6 +1328,7 @@
     </ClInclude>
     <ClInclude Include="src\Asaurus\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Asaurus\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Asaurus\Application.cpp">
@@ -1358,5 +1359,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Asaurus\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

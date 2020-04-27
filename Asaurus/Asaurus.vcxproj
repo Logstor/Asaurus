@@ -156,6 +156,7 @@
     <ClInclude Include="src\Asaurus\Log.h" />
     <ClInclude Include="src\Asaurus\MouseButtonCodes.h" />
     <ClInclude Include="src\Asaurus\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Asaurus\Renderer\Shader.h" />
     <ClInclude Include="src\Asaurus\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
@@ -577,6 +578,7 @@
     <ClCompile Include="src\Asaurus\Layer\Layer.cpp" />
     <ClCompile Include="src\Asaurus\Layer\LayerStack.cpp" />
     <ClCompile Include="src\Asaurus\Log.cpp" />
+    <ClCompile Include="src\Asaurus\Renderer\Shader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />

@@ -5,6 +5,7 @@
 #include "Events/Event.h"
 #include "Asaurus/Events/ApplicationEvent.h"
 #include "Window.h"
+#include "Asaurus/Renderer/Shader.h"
 
 #include "Asaurus/ImGui/ImGuiLayer.h"
 
@@ -38,6 +39,7 @@ namespace Asaurus
 		static Application* s_Instance;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 	};
 
 	// To be defined in client
