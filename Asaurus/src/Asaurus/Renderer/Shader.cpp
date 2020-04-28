@@ -89,7 +89,6 @@ namespace Asaurus
 		// Note the different functions here: glGetProgram* instead of glGetShader*.
 		GLint isLinked = 0;
 		glGetProgramiv(m_RendererID, GL_LINK_STATUS, (int*)&isLinked);
-		AS_CORE_TRACE("Program linked: {0}", isLinked);
 		if (isLinked == GL_FALSE)
 		{
 			GLint maxLength = 0;

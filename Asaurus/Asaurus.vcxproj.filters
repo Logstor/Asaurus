@@ -1329,6 +1329,9 @@
     <ClInclude Include="src\Asaurus\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Asaurus\Renderer\Shader.h" />
+    <ClInclude Include="src\Asaurus\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Asaurus\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Asaurus\Application.cpp">
@@ -1360,5 +1363,8 @@
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Asaurus\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Asaurus\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Asaurus\Renderer\Renderer.cpp" />
   </ItemGroup>
 </Project>
