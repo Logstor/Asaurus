@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Asaurus\Renderer\Renderer.h" />
     <ClInclude Include="src\Asaurus.h" />
     <ClInclude Include="src\Asaurus\Application.h" />
@@ -575,6 +576,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Asaurus\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Asaurus\Application.cpp" />
     <ClCompile Include="src\Asaurus\ImGui\ImGuiBuild.cpp" />
