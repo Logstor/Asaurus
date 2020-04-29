@@ -113,11 +113,9 @@ namespace Asaurus
 			return;
 		}
 
-		// Always detach shaders after a successful link.
+		// Always detach shaders after a successful link and delete
 		glDetachShader(m_RendererID, vertexShader);
 		glDetachShader(m_RendererID, fragmentShader);
-
-		// WHY DONT WE DO THIS? //
 		glDeleteShader(vertexShader);
 		glDeleteShader(fragmentShader);
 	}
