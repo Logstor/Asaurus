@@ -9,12 +9,12 @@ namespace Asaurus
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::OpenGL:
+			case RendererAPI::API::OpenGL:
 			{
 				return new OpenGLVertexBuffer(vertices, size);
 			}
 
-			case RendererAPI::None:
+			case RendererAPI::API::None:
 			{
 				AS_CORE_ASSERT(false, "RendererAPI::None is not supported: VertexBuffer::Create");
 				return nullptr;
@@ -32,12 +32,12 @@ namespace Asaurus
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::OpenGL:
+			case RendererAPI::API::OpenGL:
 			{
 				return new OpenGLIndexBuffer(indices, size);
 			}
 
-			case RendererAPI::None:
+			case RendererAPI::API::None:
 			{
 				AS_CORE_ASSERT(false, "RendererAPI::None is not supported: IndexBuffer::Create");
 				return nullptr;

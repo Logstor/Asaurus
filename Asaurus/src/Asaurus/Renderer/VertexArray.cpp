@@ -9,12 +9,12 @@ namespace Asaurus
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::OpenGL:
+			case RendererAPI::API::OpenGL:
 			{
 				return new OpenGLVertexArray();
 			}
 
-			case RendererAPI::None:
+			case RendererAPI::API::None:
 			{
 				AS_CORE_ASSERT(false, "RendererAPI::None is not supported: VertexArray::Create");
 				return nullptr;

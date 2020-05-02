@@ -10,8 +10,8 @@ namespace Asaurus
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::OpenGL: { return new OpenGLShader(vertexSrc, fragmentSrc); }
-			case RendererAPI::None: 
+			case RendererAPI::API::OpenGL: { return new OpenGLShader(vertexSrc, fragmentSrc); }
+			case RendererAPI::API::None: 
 			{
 				AS_CORE_ASSERT(false, "RendererAPI::None is not supported: VertexBuffer::Create");
 				return nullptr;
