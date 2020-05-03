@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Asaurus\Renderer\OrthoCamera.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Asaurus\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Asaurus\Renderer\RendererAPI.h" />
@@ -581,6 +582,7 @@
     <ClInclude Include="src\Asaurus\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Asaurus\Renderer\OrthoCamera.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Asaurus\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Asaurus\Renderer\RendererAPI.cpp" />

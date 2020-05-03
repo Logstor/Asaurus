@@ -1338,6 +1338,7 @@
     <ClInclude Include="src\Asaurus\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Asaurus\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Asaurus\Renderer\OrthoCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Asaurus\Application.cpp">
@@ -1378,5 +1379,6 @@
     <ClCompile Include="src\Asaurus\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Asaurus\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Asaurus\Renderer\OrthoCamera.cpp" />
   </ItemGroup>
 </Project>

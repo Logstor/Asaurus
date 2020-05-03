@@ -9,6 +9,9 @@
 #include "Asaurus/Renderer/Buffer.h"
 #include "Asaurus/Renderer/VertexArray.h"
 
+#include "Asaurus/Renderer/OrthoCamera.h"
+
+
 #include "Asaurus/ImGui/ImGuiLayer.h"
 
 namespace Asaurus
@@ -45,6 +48,8 @@ namespace Asaurus
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthoCamera m_Camera;
 	};
 
 	// To be defined in client
