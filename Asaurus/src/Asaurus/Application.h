@@ -4,10 +4,7 @@
 #include "Layer/LayerStack.h"
 #include "Events/Event.h"
 #include "Asaurus/Events/ApplicationEvent.h"
-#include "Window.h"
-#include "Asaurus/Renderer/Shader.h"
-#include "Asaurus/Renderer/Buffer.h"
-#include "Asaurus/Renderer/VertexArray.h"
+#include "Window.h"a
 
 #include "Asaurus/Renderer/OrthoCamera.h"
 
@@ -16,7 +13,7 @@
 
 namespace Asaurus
 {
-	class ASAURUS_API Application
+	class Application
 	{
 	public:
 
@@ -42,14 +39,6 @@ namespace Asaurus
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 		static Application* s_Instance;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthoCamera m_Camera;
 	};
 
 	// To be defined in client
