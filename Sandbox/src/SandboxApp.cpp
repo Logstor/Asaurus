@@ -128,21 +128,23 @@ public:
 
 	}
 
-	virtual void OnUpdate() override
+	virtual void OnUpdate(Asaurus::Timestep ts) override
 	{ 
 		// Input polling
 		if (Asaurus::Input::IsKeyPressed(AS_KEY_LEFT))
-			m_CameraPosition.x += m_CameraMoveSpeed;
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 		else if (Asaurus::Input::IsKeyPressed(AS_KEY_RIGHT))
-			m_CameraPosition.x -= m_CameraMoveSpeed;
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
+
 		if (Asaurus::Input::IsKeyPressed(AS_KEY_UP))
-			m_CameraPosition.y -= m_CameraMoveSpeed;
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 		else if (Asaurus::Input::IsKeyPressed(AS_KEY_DOWN))
-			m_CameraPosition.y += m_CameraMoveSpeed;
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
+
 		if (Asaurus::Input::IsKeyPressed(AS_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed;
+			m_CameraRotation -= m_CameraRotationSpeed * ts;
 		else if (Asaurus::Input::IsKeyPressed(AS_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed;
+			m_CameraRotation += m_CameraRotationSpeed * ts;
 
 		// Rendering
 		Asaurus::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });

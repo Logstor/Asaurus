@@ -4,6 +4,7 @@
 #include "Asaurus/Renderer/Renderer.h"
 
 //REMOVE
+#include "GLFW/glfw3.h"
 #include "Renderer/Shader.h"
 
 namespace Asaurus
@@ -52,10 +53,17 @@ namespace Asaurus
 
 	void Application::Run()
 	{
+		float time;
+		Timestep timestep;
+
 		while (m_Running)
 		{
+			time = (float)glfwGetTime(); // Platform::GetTime()
+			timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
+
 			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)

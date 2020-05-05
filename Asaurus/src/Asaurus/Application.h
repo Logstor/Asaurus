@@ -4,7 +4,8 @@
 #include "Layer/LayerStack.h"
 #include "Events/Event.h"
 #include "Asaurus/Events/ApplicationEvent.h"
-#include "Window.h"a
+#include "Window.h"
+#include "Asaurus/Core/Timestep.h"
 
 #include "Asaurus/Renderer/OrthoCamera.h"
 
@@ -34,10 +35,12 @@ namespace Asaurus
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
-		ImGuiLayer* m_ImGuiLayer;
+	private:
 		std::unique_ptr<Window> m_Window;
-		bool m_Running = true;
+		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
+		bool m_Running = true;
+		float m_LastFrameTime;
 		static Application* s_Instance;
 	};
 

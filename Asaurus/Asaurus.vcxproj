@@ -140,6 +140,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Asaurus\Core\Timestep.h" />
     <ClInclude Include="src\Asaurus\Renderer\OrthoCamera.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Asaurus\Renderer\RenderCommand.h" />

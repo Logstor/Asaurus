@@ -5,6 +5,7 @@
  */
 #include "Asaurus/Application.h"
 #include "Asaurus/Log.h"
+#include "Asaurus/Core/Timestep.h"
 
 // ------------ Layering ---------------
 #include "Asaurus/Layer/Layer.h"
