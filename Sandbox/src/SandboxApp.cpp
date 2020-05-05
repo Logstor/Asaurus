@@ -1,12 +1,13 @@
 #include <Asaurus.h>
 
 #include "imgui/imgui.h"
+#include "glm/gtc/matrix_transform.hpp"
 
 class ExampleLayer : public Asaurus::Layer
 {
 public:
-	ExampleLayer() 
-		: Asaurus::Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9, 0.9f), m_CameraPosition(0.0f)
+	ExampleLayer()
+		: Asaurus::Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9, 0.9f), m_CameraPosition(0.0f), m_SquarePosition(1.0f)
 	{
 		// Draw Triangle
 		m_VertexArray.reset(Asaurus::VertexArray::Create());
@@ -37,10 +38,10 @@ public:
 		m_SquareVA.reset(Asaurus::VertexArray::Create());
 
 		float squareVertices[3 * 4] = {
-			-0.85f, -0.85f, 0.0f,
-			 0.85f, -0.85f, 0.0f,
-			 0.85f,  0.85f, 0.0f,
-			-0.85f,  0.85f, 0.0f
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
 		};
 
 		std::shared_ptr<Asaurus::VertexBuffer> squareVB;
@@ -62,6 +63,7 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 			out vec4 v_Color;
@@ -70,7 +72,7 @@ public:
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 
 		)";
@@ -99,13 +101,14 @@ public:
 			layout(location = 0) in vec3 a_Position;
 
 			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
 
 			out vec3 v_Position;
 
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = u_ViewProjection * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
 			}
 
 		)";
@@ -146,17 +149,28 @@ public:
 		else if (Asaurus::Input::IsKeyPressed(AS_KEY_A))
 			m_CameraRotation += m_CameraRotationSpeed * ts;
 
-		// Rendering
 		Asaurus::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Asaurus::RenderCommand::Clear();
 
+		// Applying movement
 		m_Camera.SetPosition(m_CameraPosition);
 		m_Camera.SetRotation(m_CameraRotation);
 
+		// Rendering
 		Asaurus::Renderer::BeginScene(m_Camera);
 
-		Asaurus::Renderer::Submit(m_BlueShader, m_SquareVA);
-		Asaurus::Renderer::Submit(m_Shader, m_VertexArray);
+		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+
+		for (int y = 0; y < 20; y++)
+		{
+			for (int x = 0; x < 20; x++)
+			{
+				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+				Asaurus::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
+			}
+		}
+		//Asaurus::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Asaurus::Renderer::EndScene();
 	}
@@ -177,8 +191,9 @@ private:
 
 	Asaurus::OrthoCamera m_Camera;
 	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 0.05f;
-	float m_CameraRotationSpeed = 0.1f;
+	float m_CameraMoveSpeed = 5.0f;
+
+	float m_CameraRotationSpeed = 120.0f;
 	float m_CameraRotation = 0.0f;
 };
 
