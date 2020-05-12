@@ -7,7 +7,7 @@ class ExampleLayer : public Asaurus::Layer
 {
 public:
 	ExampleLayer()
-		: Asaurus::Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9, 0.9f), m_CameraPosition(0.0f), m_SquarePosition(1.0f)
+		: Asaurus::Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9, 0.9f), m_CameraPosition(0.0f)
 	{
 		// Draw Triangle
 		m_VertexArray.reset(Asaurus::VertexArray::Create());
@@ -95,7 +95,7 @@ public:
 
 		m_Shader.reset(Asaurus::Shader::Create(vertexSrc, fragmentSrc));
 
-		std::string blueShaderVertexSrc = R"(
+		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) in vec3 a_Position;
@@ -113,21 +113,23 @@ public:
 
 		)";
 
-		std::string blueShaderFragmentSrc = R"(
+		std::string flatColorShaderFragmentSrc = R"(
 			#version 330 core
 			
 			layout(location = 0) out vec4 color;
 
 			in vec3 v_Position;
 
+			uniform vec4 u_Color;
+
 			void main()
 			{
-				color = vec4(0.2, 0.5, 1.0, 1.0);
+				color = u_Color;
 			}
 
 		)";
 
-		m_BlueShader.reset(Asaurus::Shader::Create(blueShaderVertexSrc, blueShaderFragmentSrc));
+		m_FlatColorShader.reset(Asaurus::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 
 	}
 
@@ -161,13 +163,21 @@ public:
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-		for (int y = 0; y < 20; y++)
+		glm::vec4 redColor(0.8f, 0.3f, 0.2f, 1.0f);
+		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
+		for (int y = 0; y < 200; y++)
 		{
-			for (int x = 0; x < 20; x++)
+			for (int x = 0; x < 200; x++)
 			{
 				glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 				glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-				Asaurus::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
+
+				if (x % 2 == 0)
+					m_FlatColorShader->UploadUniformFloat4("u_Color", redColor);
+				else
+					m_FlatColorShader->UploadUniformFloat4("u_Color", blueColor);
+
+				Asaurus::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
 		//Asaurus::Renderer::Submit(m_Shader, m_VertexArray);
@@ -186,7 +196,7 @@ private:
 	std::shared_ptr<Asaurus::Shader> m_Shader;
 	std::shared_ptr<Asaurus::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Asaurus::Shader> m_BlueShader;
+	std::shared_ptr<Asaurus::Shader> m_FlatColorShader;
 	std::shared_ptr<Asaurus::VertexArray> m_SquareVA;
 
 	Asaurus::OrthoCamera m_Camera;
