@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef AS_PLATFORM_WINDOWS
 #if AS_DYNAMIC_LINK
 	#ifdef AS_BUILD_DLL
@@ -27,3 +29,13 @@
 #define BIT(x) (1 << x)
 
 #define AS_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+// Asaurus Pointer types
+namespace Asaurus
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+	
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}

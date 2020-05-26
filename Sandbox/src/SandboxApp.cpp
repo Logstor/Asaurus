@@ -22,7 +22,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.5f, 1.0, 0.1f, 1.0f
 		};
 
-		std::shared_ptr<Asaurus::VertexBuffer> vertexBuffer;
+		Asaurus::Ref<Asaurus::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Asaurus::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Asaurus::BufferLayout layout = {
@@ -35,7 +35,7 @@ public:
 
 		uint32_t indicies[3] = { 0, 1, 2 };
 
-		std::shared_ptr<Asaurus::IndexBuffer> indexBuffer;
+		Asaurus::Ref<Asaurus::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Asaurus::IndexBuffer::Create(indicies, sizeof(indicies) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -48,7 +48,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Asaurus::VertexBuffer> squareVB;
+		Asaurus::Ref<Asaurus::VertexBuffer> squareVB;
 		squareVB.reset(Asaurus::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{ Asaurus::ShaderDataType::Float3, "a_Position" },
@@ -57,7 +57,7 @@ public:
 
 		uint32_t squareIndicies[6] = { 0, 1, 2, 2, 3, 0 };
 
-		std::shared_ptr<Asaurus::IndexBuffer> squareIB; squareIB.reset(Asaurus::IndexBuffer::Create(squareIndicies, sizeof(squareIndicies) / sizeof(uint32_t)));
+		Asaurus::Ref<Asaurus::IndexBuffer> squareIB; squareIB.reset(Asaurus::IndexBuffer::Create(squareIndicies, sizeof(squareIndicies) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
 		std::string vertexSrc = R"(
@@ -197,11 +197,11 @@ public:
 	}
 
 private:
-	std::shared_ptr<Asaurus::Shader> m_Shader;
-	std::shared_ptr<Asaurus::VertexArray> m_VertexArray;
+	Asaurus::Ref<Asaurus::Shader> m_Shader;
+	Asaurus::Ref<Asaurus::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Asaurus::Shader> m_FlatColorShader;
-	std::shared_ptr<Asaurus::VertexArray> m_SquareVA;
+	Asaurus::Ref<Asaurus::Shader> m_FlatColorShader;
+	Asaurus::Ref<Asaurus::VertexArray> m_SquareVA;
 
 	Asaurus::OrthoCamera m_Camera;
 	glm::vec3 m_CameraPosition;
