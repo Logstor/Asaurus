@@ -23,6 +23,7 @@
 #include "Asaurus/Renderer/Buffer.h"
 #include "Asaurus/Renderer/VertexArray.h"
 #include "Asaurus/Renderer/Shader.h"
+#include "Asaurus/Renderer/Texture.h"
 
 #include "Asaurus/Renderer/OrthoCamera.h"
 
