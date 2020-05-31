@@ -18,3 +18,7 @@ This Game Engine is based on the Hazel Game Engine Youtube series from **TheCher
 * [Youtube Series](https://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT)
 
 ## Build
+
+
+## Contributing
+Currently no contributions is accepted.
