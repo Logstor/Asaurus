@@ -174,6 +174,7 @@ public:
 		m_TextureShader.reset(Asaurus::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
 
 		m_Texture = Asaurus::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_ChernoLogoTexture = Asaurus::Texture2D::Create("assets/textures/ChernoLogo.png");
 		std::dynamic_pointer_cast<Asaurus::OpenGLShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<Asaurus::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", slot);
 	}
@@ -225,6 +226,9 @@ public:
 		m_Texture->Bind(slot);
 		Asaurus::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
+		m_ChernoLogoTexture->Bind(slot);
+		Asaurus::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
 
 		// Triangle
 		//Asaurus::Renderer::Submit(m_Shader, m_VertexArray);
@@ -250,7 +254,7 @@ private:
 	Asaurus::Ref<Asaurus::Shader> m_FlatColorShader, m_TextureShader;
 	Asaurus::Ref<Asaurus::VertexArray> m_SquareVA;
 
-	Asaurus::Ref<Asaurus::Texture2D> m_Texture;
+	Asaurus::Ref<Asaurus::Texture2D> m_Texture, m_ChernoLogoTexture;
 	uint32_t slot = 0;
 
 	Asaurus::OrthoCamera m_Camera;
