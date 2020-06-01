@@ -80,7 +80,7 @@ namespace Asaurus
 				ShaderDataTypeToOpenGLBaseType(element.Type),
 				element.Normalized ? GL_TRUE : GL_FALSE,
 				layout.GetStride(),
-				(const void*)element.Offset);
+				(const void*)(intptr_t)element.Offset);
 
 			index++;
 		}
