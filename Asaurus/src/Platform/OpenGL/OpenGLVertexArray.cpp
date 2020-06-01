@@ -73,9 +73,9 @@ namespace Asaurus
 		uint32_t index = 0;
 		for (const auto& element : layout)
 		{
-			glEnableVertexAttribArray(index);
+			glEnableVertexAttribArray(index + m_VertexBufferIndexOffset);
 
-			glVertexAttribPointer(index,
+			glVertexAttribPointer(index + m_VertexBufferIndexOffset,
 				element.GetComponentCount(),
 				ShaderDataTypeToOpenGLBaseType(element.Type),
 				element.Normalized ? GL_TRUE : GL_FALSE,
@@ -86,6 +86,7 @@ namespace Asaurus
 		}
 
 		m_VertexBuffers.push_back(buffer);
+		m_VertexBufferIndexOffset += layout.GetElements().size();
 	}
 
 	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer>& buffer)
