@@ -22,6 +22,6 @@ namespace Asaurus
 		std::vector<Ref<VertexBuffer>> m_VertexBuffers;
 		Ref<IndexBuffer> m_IndexBuffer;
 		uint32_t m_RendererID;
-		uint32_t m_VertexBufferIndexOffset = 0;
+		uint32_t m_VertexBufferIndex = 0;
 	};
 }
