@@ -154,7 +154,8 @@ namespace Asaurus
 		// Create Program at first
 		GLuint program = glCreateProgram();
 
-		std::vector<GLenum> glShaderIDs(shaderSources.size());
+		AS_CORE_ASSERT(shaderSources.size() <= 3, "Asaurus doesn't support more than 3 shaders!");
+		std::array<GLuint, 3>glShaderIDs; int glShaderIDIndex = 0;
 		for (auto& kv : shaderSources)
 		{
 			const GLenum type = kv.first;
@@ -192,7 +193,7 @@ namespace Asaurus
 
 			// End with attaching the shader to the program
 			glAttachShader(program, shader);
-			glShaderIDs.push_back(shader);
+			glShaderIDs[glShaderIDIndex++] = shader;
 		}
 
 		// Link our program
