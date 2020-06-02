@@ -100,7 +100,7 @@ namespace Asaurus
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
 		// Open filestream and check it
-		std::ifstream in(filepath, std::ios::in, std::ios::binary);
+		std::ifstream in(filepath, std::ios::in | std::ios::binary);
 
 		std::string result;
 		if (in)
