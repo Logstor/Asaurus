@@ -98,7 +98,7 @@ public:
 
 		)";
 
-		m_Shader.reset(Asaurus::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Asaurus::Shader::Create("VertexPosColorTriangle", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -134,14 +134,14 @@ public:
 
 		)";
 
-		m_FlatColorShader.reset(Asaurus::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Asaurus::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-		m_TextureShader.reset(Asaurus::Shader::Create("assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Asaurus::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_ChernoLogoTexture = Asaurus::Texture2D::Create("assets/textures/ChernoLogo.png");
-		std::dynamic_pointer_cast<Asaurus::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Asaurus::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", slot);
+		std::dynamic_pointer_cast<Asaurus::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Asaurus::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", slot);
 	}
 
 	virtual void OnUpdate(Asaurus::Timestep ts) override
@@ -188,11 +188,13 @@ public:
 			}
 		}
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind(slot);
-		Asaurus::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Asaurus::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		m_ChernoLogoTexture->Bind(slot);
-		Asaurus::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Asaurus::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 
 		// Triangle
@@ -213,10 +215,11 @@ public:
 	}
 
 private:
+	Asaurus::ShaderLibrary m_ShaderLibrary;
 	Asaurus::Ref<Asaurus::Shader> m_Shader;
 	Asaurus::Ref<Asaurus::VertexArray> m_VertexArray;
 
-	Asaurus::Ref<Asaurus::Shader> m_FlatColorShader, m_TextureShader;
+	Asaurus::Ref<Asaurus::Shader> m_FlatColorShader;
 	Asaurus::Ref<Asaurus::VertexArray> m_SquareVA;
 
 	Asaurus::Ref<Asaurus::Texture2D> m_Texture, m_ChernoLogoTexture;

@@ -20,11 +20,13 @@ namespace Asaurus
 		/// <param name="path">Path to asset</param>
 		/// <returns>An OpenGLShader instance</returns>
 		OpenGLShader(const std::string& path);
-		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
 		virtual ~OpenGLShader() override;
 
 		virtual void Bind() const override;
 		virtual void Unbind() const override;
+
+		virtual const std::string& GetName() const override { return m_Name; }
 
 		void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
 		void UploadUniformMat3(const std::string& name, const glm::mat3& matrix);
@@ -43,6 +45,7 @@ namespace Asaurus
 
 	private:
 		uint32_t m_RendererID;
+		std::string m_Name;
 	};
 }
 
