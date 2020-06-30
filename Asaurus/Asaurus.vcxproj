@@ -144,6 +144,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Asaurus\OrthographicCameraController.h" />
     <ClInclude Include="src\Asaurus.h" />
     <ClInclude Include="src\Asaurus\Application.h" />
     <ClInclude Include="src\Asaurus\Core.h" />
@@ -590,6 +591,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Asaurus\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Asaurus\Application.cpp" />
     <ClCompile Include="src\Asaurus\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Asaurus\ImGui\ImGuiLayer.cpp" />

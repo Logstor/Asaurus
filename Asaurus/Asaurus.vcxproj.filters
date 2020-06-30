@@ -1389,6 +1389,9 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Asaurus\OrthographicCameraController.h">
+      <Filter>src\Asaurus</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Asaurus\Application.cpp">
@@ -1462,6 +1465,9 @@
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Asaurus\OrthographicCameraController.cpp">
+      <Filter>src\Asaurus</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,6 +7,9 @@
 
 namespace Asaurus
 {
+	/// <summary>
+	/// Renderer for 3D rendering.
+	/// </summary>
 	class Renderer
 	{
 	public:

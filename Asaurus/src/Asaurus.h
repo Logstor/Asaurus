@@ -15,6 +15,7 @@
 #include "Asaurus/Input.h"
 #include "Asaurus/KeyCodes.h"
 #include "Asaurus/MouseButtonCodes.h"
+#include "Asaurus/OrthographicCameraController.h"
 
 // ------------ Graphics ---------------
 #include "Asaurus/Renderer/Renderer.h"
@@ -24,8 +25,6 @@
 #include "Asaurus/Renderer/VertexArray.h"
 #include "Asaurus/Renderer/Shader.h"
 #include "Asaurus/Renderer/Texture.h"
-
-#include "Asaurus/Renderer/OrthoCamera.h"
 
 // ------------ Entry Point ------------
 #include "Asaurus/EntryPoint.h"
