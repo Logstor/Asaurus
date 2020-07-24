@@ -103,8 +103,8 @@ namespace Asaurus
 				data.Height = height;
 
 				WindowResizeEvent event(width, height);
+				AS_CORE_WARN("{0}, {1}", width, height);
 				data.EventCallback(event);
-
 			});
 
 		glfwSetWindowCloseCallback(m_Window, [](GLFWwindow* window)

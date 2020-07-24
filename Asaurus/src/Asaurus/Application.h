@@ -34,14 +34,17 @@ namespace Asaurus
 
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
 
 	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
-		bool m_Running = true;
 		float m_LastFrameTime;
 		static Application* s_Instance;
+
+		bool m_Minimized	= false;
+		bool m_Running		= true;
 	};
 
 	// To be defined in client

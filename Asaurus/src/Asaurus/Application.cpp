@@ -45,6 +45,7 @@ namespace Asaurus
 		// Create Dispatcher and Dispatch
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
@@ -65,8 +66,12 @@ namespace Asaurus
 			timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			for (Layer* layer : m_LayerStack)
-				layer->OnUpdate(timestep);
+			// Only render and update if the window isn't minimized
+			if (!m_Minimized)
+			{
+				for (Layer* layer : m_LayerStack)
+					layer->OnUpdate(timestep);
+			}
 
 			m_ImGuiLayer->Begin();
 			for (Layer* layer : m_LayerStack)
@@ -81,6 +86,23 @@ namespace Asaurus
 	{
 		m_Running = false;
 		return true;
+	}
+
+	bool Application::OnWindowResize(WindowResizeEvent& e)
+	{
+		if (!e.GetWidth() || !e.GetHeight())
+		{
+			m_Minimized = true;
+			return false;
+		}
+
+		// Make sure minimized is false
+		m_Minimized = false;
+
+		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+
+		// Don't consume the event
+		return false;
 	}
 }
 
