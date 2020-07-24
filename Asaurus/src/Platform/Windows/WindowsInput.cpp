@@ -1,7 +1,7 @@
 #include "aspch.h"
 #include "WindowsInput.h"
 
-#include "Asaurus/Application.h"
+#include "Asaurus/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Asaurus

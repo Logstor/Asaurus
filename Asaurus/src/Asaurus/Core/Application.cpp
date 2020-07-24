@@ -1,11 +1,11 @@
 #include "aspch.h"
 #include "Application.h"
-#include "Asaurus/Log.h"
+#include "Asaurus/Core/Log.h"
 #include "Asaurus/Renderer/Renderer.h"
 
 //REMOVE
 #include "GLFW/glfw3.h"
-#include "Renderer/Shader.h"
+#include "Asaurus/Renderer/Shader.h"
 
 namespace Asaurus
 {

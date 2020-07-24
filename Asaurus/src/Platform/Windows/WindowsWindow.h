@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Asaurus/Window.h"
+#include "Asaurus/Core/Window.h"
 #include "Asaurus/Renderer/GraphicsContext.h"
 
 #include "GLFW/glfw3.h"

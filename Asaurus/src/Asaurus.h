@@ -3,19 +3,19 @@
 /*
  * For use in client application
  */
-#include "Asaurus/Application.h"
-#include "Asaurus/Log.h"
+#include "Asaurus/Core/Application.h"
+#include "Asaurus/Core/Log.h"
 #include "Asaurus/Core/Timestep.h"
 
 // ------------ Layering ---------------
-#include "Asaurus/Layer/Layer.h"
+#include "Asaurus/Core/Layer/Layer.h"
 #include "Asaurus/ImGui/ImGuiLayer.h"
 
 // ------------ IO ---------------------
-#include "Asaurus/Input.h"
-#include "Asaurus/KeyCodes.h"
-#include "Asaurus/MouseButtonCodes.h"
-#include "Asaurus/OrthographicCameraController.h"
+#include "Asaurus/Core/Input.h"
+#include "Asaurus/Core/KeyCodes.h"
+#include "Asaurus/Core/MouseButtonCodes.h"
+#include "Asaurus/Renderer/OrthographicCameraController.h"
 
 // ------------ Graphics ---------------
 #include "Asaurus/Renderer/Renderer.h"
@@ -27,4 +27,4 @@
 #include "Asaurus/Renderer/Texture.h"
 
 // ------------ Entry Point ------------
-#include "Asaurus/EntryPoint.h"
+#include "Asaurus/Core/EntryPoint.h"

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Asaurus/Core.h"
-#include "Asaurus/Layer/Layer.h"
+#include "Asaurus/Core/Core.h"
+#include "Asaurus/Core/Layer/Layer.h"
 #include "Asaurus/Events/MouseEvent.h"
 #include "Asaurus/Events/KeyEvent.h"
 #include "Asaurus/Events/ApplicationEvent.h"

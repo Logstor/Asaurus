@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Asaurus/Core.h"
+#include "Asaurus/Core/Core.h"
 #include <string>
 
 namespace Asaurus

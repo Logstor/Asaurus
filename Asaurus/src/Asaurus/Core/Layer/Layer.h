@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Asaurus/Core.h"
+#include "Asaurus/Core/Core.h"
 #include "Asaurus/Core/Timestep.h"
 #include "Asaurus/Events/Event.h"
 

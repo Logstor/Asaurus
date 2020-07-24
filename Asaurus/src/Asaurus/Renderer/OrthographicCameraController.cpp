@@ -1,8 +1,8 @@
 #include "aspch.h"
 #include "OrthographicCameraController.h"
 
-#include "Asaurus/Input.h"
-#include "Asaurus/KeyCodes.h"
+#include "Asaurus/Core/Input.h"
+#include "Asaurus/Core/KeyCodes.h"
 
 namespace Asaurus
 {
