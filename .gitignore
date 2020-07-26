@@ -3,6 +3,13 @@
 bin/
 bin-int/
 
+**/bin/
+!vendor/bin/premake/
+
 # Files
 *.user
 imgui.ini
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user 
