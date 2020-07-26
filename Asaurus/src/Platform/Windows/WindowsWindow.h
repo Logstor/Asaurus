@@ -38,7 +38,7 @@ namespace Asaurus
 		inline void InitializeGLFWCallbacks();
 
 	private:
-		GraphicsContext* m_Context;
+		Scope<GraphicsContext> m_Context;
 		GLFWwindow* m_Window;
 
 		struct WindowData

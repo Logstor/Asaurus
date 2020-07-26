@@ -29,7 +29,7 @@ namespace Asaurus
 			glm::mat4 m_ViewProjectionMatrix;
 		};
 
-		static SceneData* m_SceneData;
+		static Scope<SceneData> s_SceneData;
 	};
 }
 

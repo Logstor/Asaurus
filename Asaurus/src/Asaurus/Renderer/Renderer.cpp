@@ -4,7 +4,7 @@
 
 namespace Asaurus
 {
-	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData();
+	Scope<Renderer::SceneData> Renderer::s_SceneData = CreateScope<Renderer::SceneData>();
 
 	void Renderer::Init()
 	{
@@ -18,7 +18,7 @@ namespace Asaurus
 
 	void Renderer::BeginScene(OrthoCamera& camera)
 	{
-		m_SceneData->m_ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+		s_SceneData->m_ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
 
 	void Renderer::EndScene()
@@ -28,7 +28,7 @@ namespace Asaurus
 	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", m_SceneData->m_ViewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_ViewProjection", s_SceneData->m_ViewProjectionMatrix);
 		std::dynamic_pointer_cast<OpenGLShader>(shader)->UploadUniformMat4("u_Transform", transform);
 
 		vertexArray->Bind();
