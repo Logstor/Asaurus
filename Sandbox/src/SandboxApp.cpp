@@ -1,9 +1,11 @@
 #include <Asaurus.h>
+#include <Asaurus/Core/EntryPoint.h>
 
 #include "Platform/OpenGL/OpenGLShader.h"
+#include "Sandbox2D.h"
 
 #include "imgui/imgui.h"
-#include "glm/gtc/matrix_transform.hpp"
+#include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 
@@ -14,7 +16,7 @@ public:
 		: Asaurus::Layer("Example"), m_CameraController(1280.0f / 720.0f)
 	{
 		// Draw Triangle
-		m_VertexArray.reset(Asaurus::VertexArray::Create());
+		m_VertexArray = Asaurus::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.5f, 0.2, 0.1f, 1.0f,
@@ -39,7 +41,7 @@ public:
 		indexBuffer.reset(Asaurus::IndexBuffer::Create(indicies, sizeof(indicies) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVA.reset(Asaurus::VertexArray::Create());
+		m_SquareVA = Asaurus::VertexArray::Create();
 
 		float squareVertices[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -218,7 +220,8 @@ class Sandbox : public Asaurus::Application
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()

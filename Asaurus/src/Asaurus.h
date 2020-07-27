@@ -25,6 +25,3 @@
 #include "Asaurus/Renderer/VertexArray.h"
 #include "Asaurus/Renderer/Shader.h"
 #include "Asaurus/Renderer/Texture.h"
-
-// ------------ Entry Point ------------
-#include "Asaurus/Core/EntryPoint.h"
