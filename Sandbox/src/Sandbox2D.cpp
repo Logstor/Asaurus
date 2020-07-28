@@ -11,28 +11,7 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
-	m_SquareVA = Asaurus::VertexArray::Create();
-
-	float squareVertices[5 * 4] = {
-		-0.5f, -0.5f, 0.0f,
-		 0.5f, -0.5f, 0.0f,
-		 0.5f,  0.5f, 0.0f,
-		-0.5f,  0.5f, 0.0f
-	};
-
-	Asaurus::Ref<Asaurus::VertexBuffer> squareVB;
-	squareVB.reset(Asaurus::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-	squareVB->SetLayout({
-		{ Asaurus::ShaderDataType::Float3, "a_Position" }
-						});
-	m_SquareVA->AddVertexBuffer(squareVB);
-
-	uint32_t squareIndicies[6] = { 0, 1, 2, 2, 3, 0 };
-
-	Asaurus::Ref<Asaurus::IndexBuffer> squareIB; squareIB.reset(Asaurus::IndexBuffer::Create(squareIndicies, sizeof(squareIndicies) / sizeof(uint32_t)));
-	m_SquareVA->SetIndexBuffer(squareIB);
-
-	m_FlatColorShader = Asaurus::Shader::Create("assets/shaders/FlatColor.glsl");
+	
 }
 
 void Sandbox2D::OnDetach() 
@@ -47,14 +26,14 @@ void Sandbox2D::OnUpdate(Asaurus::Timestep timestep)
 	Asaurus::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 	Asaurus::RenderCommand::Clear();
 
-	Asaurus::Renderer::BeginScene(m_CameraController.GetCamera());
+	Asaurus::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-	std::dynamic_pointer_cast<Asaurus::OpenGLShader>(m_FlatColorShader)->Bind();
-	std::dynamic_pointer_cast<Asaurus::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
+	Asaurus::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f, 1.0f }, { 0.8f, 0.2f, 0.3f, 1.0f });
 
-	Asaurus::Renderer::Submit(m_FlatColorShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+	Asaurus::Renderer2D::EndScene();
 
-	Asaurus::Renderer::EndScene();
+	//std::dynamic_pointer_cast<Asaurus::OpenGLShader>(m_FlatColorShader)->Bind();
+	//std::dynamic_pointer_cast<Asaurus::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat4("u_Color", m_SquareColor);
 }
 void Sandbox2D::OnImGuiRender() 
 {

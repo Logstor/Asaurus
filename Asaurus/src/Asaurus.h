@@ -19,6 +19,7 @@
 
 // ------------ Graphics ---------------
 #include "Asaurus/Renderer/Renderer.h"
+#include "Asaurus/Renderer/Renderer2D.h"
 #include "Asaurus/Renderer/RenderCommand.h"
 
 #include "Asaurus/Renderer/Buffer.h"

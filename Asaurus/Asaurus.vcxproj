@@ -144,6 +144,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Asaurus\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Asaurus.h" />
     <ClInclude Include="src\Asaurus\Core\Application.h" />
     <ClInclude Include="src\Asaurus\Core\Core.h" />
@@ -591,6 +592,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Asaurus\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Asaurus\Core\Application.cpp" />
     <ClCompile Include="src\Asaurus\Core\Layer\Layer.cpp" />
     <ClCompile Include="src\Asaurus\Core\Layer\LayerStack.cpp" />
