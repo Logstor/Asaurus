@@ -9,7 +9,10 @@ namespace Asaurus
 		switch (type)
 		{
 			case Asaurus::ShaderDataType::None:
-				break;
+			{
+				AS_CORE_ASSERT(false, "ShaderDataType was None!");
+				return 0;
+			}
 			case Asaurus::ShaderDataType::Float:
 				return GL_FLOAT;
 			case Asaurus::ShaderDataType::Float2:

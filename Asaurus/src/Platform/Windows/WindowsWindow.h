@@ -53,6 +53,3 @@ namespace Asaurus
 		WindowData m_Data;
 	};
 }
-
-
-

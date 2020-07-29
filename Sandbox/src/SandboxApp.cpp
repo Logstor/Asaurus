@@ -19,9 +19,9 @@ public:
 		m_VertexArray = Asaurus::VertexArray::Create();
 
 		float vertices[3 * 7] = {
-			-0.5f, -0.5f, 0.0f, 0.5f, 0.2, 0.1f, 1.0f,
-			 0.5f, -0.5f, 0.0f, 0.5f, 0.2, 1.0f, 1.0f,
-			 0.0f,  0.5f, 0.0f, 0.5f, 1.0, 0.1f, 1.0f
+			-0.5f, -0.5f, 0.0f, 0.5f, 0.2f, 0.1f, 1.0f,
+			 0.5f, -0.5f, 0.0f, 0.5f, 0.2f, 1.0f, 1.0f,
+			 0.0f,  0.5f, 0.0f, 0.5f, 1.0f, 0.1f, 1.0f
 		};
 
 		Asaurus::Ref<Asaurus::VertexBuffer> vertexBuffer;
