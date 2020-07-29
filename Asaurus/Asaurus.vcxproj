@@ -144,7 +144,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Asaurus\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Asaurus.h" />
     <ClInclude Include="src\Asaurus\Core\Application.h" />
     <ClInclude Include="src\Asaurus\Core\Core.h" />
@@ -168,6 +167,7 @@
     <ClInclude Include="src\Asaurus\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Asaurus\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Asaurus\Renderer\Renderer.h" />
+    <ClInclude Include="src\Asaurus\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Asaurus\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Asaurus\Renderer\Shader.h" />
     <ClInclude Include="src\Asaurus\Renderer\Texture.h" />
@@ -592,7 +592,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Asaurus\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Asaurus\Core\Application.cpp" />
     <ClCompile Include="src\Asaurus\Core\Layer\Layer.cpp" />
     <ClCompile Include="src\Asaurus\Core\Layer\LayerStack.cpp" />
@@ -604,6 +603,7 @@
     <ClCompile Include="src\Asaurus\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Asaurus\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Asaurus\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Asaurus\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Asaurus\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Asaurus\Renderer\Shader.cpp" />
     <ClCompile Include="src\Asaurus\Renderer\Texture.cpp" />
