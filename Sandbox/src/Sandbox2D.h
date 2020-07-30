@@ -20,6 +20,7 @@ private:
 	// Temporary
 	Asaurus::Ref<Asaurus::VertexArray> m_SquareVA;
 	Asaurus::Ref<Asaurus::Shader> m_FlatColorShader;
+	Asaurus::Ref<Asaurus::Texture2D> m_CheckerboardTexture;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 };
