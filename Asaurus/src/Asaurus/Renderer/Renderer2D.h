@@ -1,6 +1,6 @@
 #pragma once
 #include "Asaurus/Renderer/OrthoCamera.h"
-#include "Texture.h"
+#include "Asaurus/Renderer/Texture.h"
 
 namespace Asaurus
 {

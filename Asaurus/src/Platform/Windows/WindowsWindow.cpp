@@ -1,5 +1,5 @@
 #include "aspch.h"
-#include "WindowsWindow.h"
+#include "Platform/Windows/WindowsWindow.h"
 #include "Platform/OpenGL/OpenGLContext.h"
 #include "Asaurus/Events/ApplicationEvent.h"
 #include "Asaurus/Events/KeyEvent.h"
@@ -15,9 +15,9 @@ namespace Asaurus
 		AS_CORE_ERROR("GLFW Error! ({0}): {1}", error, desc);
 	}
 
-	Window* Window::Create(const WindowProps& props)
+	Scope<Window> Window::Create(const WindowProps& props)
 	{
-		return new WindowsWindow(props);
+		return CreateScope<WindowsWindow>(props);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)

@@ -4,7 +4,7 @@
 
 namespace Asaurus
 {
-	class ASAURUS_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -19,7 +19,7 @@ namespace Asaurus
 		int m_KeyCode;
 	};
 
-	class ASAURUS_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
@@ -41,7 +41,7 @@ namespace Asaurus
 		int m_RepeatCount;
 	};
 
-	class ASAURUS_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode)
@@ -59,7 +59,7 @@ namespace Asaurus
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class ASAURUS_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode)

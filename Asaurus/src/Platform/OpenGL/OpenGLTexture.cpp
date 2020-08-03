@@ -1,8 +1,8 @@
 #include "aspch.h"
 #include "OpenGLTexture.h"
 
-#include "stb_image.h"
-#include "glad/glad.h"
+#include <stb_image.h>
+#include <glad/glad.h>
 
 namespace Asaurus
 {

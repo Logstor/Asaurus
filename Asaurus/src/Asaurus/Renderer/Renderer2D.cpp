@@ -1,9 +1,9 @@
 #include "aspch.h"
-#include "Renderer2D.h"
+#include "Asaurus/Renderer/Renderer2D.h"
 
-#include "VertexArray.h"
-#include "Shader.h"
-#include "RenderCommand.h"
+#include "Asaurus/Renderer/VertexArray.h"
+#include "Asaurus/Renderer/Shader.h"
+#include "Asaurus/Renderer/RenderCommand.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -31,8 +31,7 @@ namespace Asaurus
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		Ref<VertexBuffer> squareVB;
-		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Ref<VertexBuffer> squareVB = VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVB->SetLayout({
 			{ ShaderDataType::Float3, "a_Position" },
 			{ ShaderDataType::Float2, "a_TexCoord"}
@@ -41,7 +40,7 @@ namespace Asaurus
 
 		uint32_t squareIndicies[6] = { 0, 1, 2, 2, 3, 0 };
 
-		Ref<IndexBuffer> squareIB; squareIB.reset(IndexBuffer::Create(squareIndicies, sizeof(squareIndicies) / sizeof(uint32_t)));
+		Ref<IndexBuffer> squareIB = IndexBuffer::Create(squareIndicies, sizeof(squareIndicies) / sizeof(uint32_t));
 		s_Data->QuadVertexArray->SetIndexBuffer(squareIB);
 
 		s_Data->WhiteTexture	= Texture2D::Create(1, 1);

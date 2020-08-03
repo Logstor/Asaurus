@@ -5,7 +5,7 @@
 
 namespace Asaurus
 {
-	class ASAURUS_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();

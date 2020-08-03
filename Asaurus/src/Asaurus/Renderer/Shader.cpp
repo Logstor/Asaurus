@@ -10,7 +10,7 @@ namespace Asaurus
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::API::OpenGL: { return std::make_shared<OpenGLShader>(path); }
+			case RendererAPI::API::OpenGL: { return CreateRef<OpenGLShader>(path); }
 			case RendererAPI::API::None:
 			{
 				AS_CORE_ASSERT(false, "RendererAPI::None is not supported: VertexBuffer::Create");
@@ -28,7 +28,7 @@ namespace Asaurus
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::API::OpenGL: { return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc); }
+			case RendererAPI::API::OpenGL: { return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc); }
 			case RendererAPI::API::None: 
 			{
 				AS_CORE_ASSERT(false, "RendererAPI::None is not supported: VertexBuffer::Create");

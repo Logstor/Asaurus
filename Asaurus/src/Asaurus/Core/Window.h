@@ -22,7 +22,7 @@ namespace Asaurus
 	};
 
 	// Interface representing a desktop system based Window
-	class ASAURUS_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
@@ -41,7 +41,7 @@ namespace Asaurus
 
 		virtual void* GetNativeWindow() const = 0;
 
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Scope<Window> Create(const WindowProps& props = WindowProps());
 	};
 
 }

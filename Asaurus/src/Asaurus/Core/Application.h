@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Core.h"
+#include "Asaurus/Core/Core.h"
 #include "Asaurus/Core/Layer/LayerStack.h"
 #include "Asaurus/Events/Event.h"
 #include "Asaurus/Events/ApplicationEvent.h"
-#include "Window.h"
+#include "Asaurus/Core/Window.h"
 #include "Asaurus/Core/Timestep.h"
 
 #include "Asaurus/Renderer/OrthoCamera.h"

@@ -49,22 +49,6 @@
 	#error "Unknown platform!"
 #endif // End of platform detection
 
-
-// DLL support
-#ifdef AS_PLATFORM_WINDOWS
-	#if AS_DYNAMIC_LINK
-		#ifdef AS_BUILD_DLL
-			#define ASAURUS_API __declspec(dllexport)
-	#else
-		#define ASAURUS_API __declspec(dllimport)
-		#endif
-	#else
-		#define ASAURUS_API
-	#endif
-#else
-	#error Asaurus only supports Windows!
-#endif // End of DLL support
-
 #ifdef AS_DEBUG
 	#define AS_ENABLE_ASSERTS
 #endif

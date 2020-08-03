@@ -24,6 +24,7 @@ namespace Asaurus
 
 		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray) = 0;
 
+		static Scope<RendererAPI> Create();
 		inline static API GetAPI() { return s_API; }
 
 	private:

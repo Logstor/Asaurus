@@ -60,29 +60,29 @@ namespace Asaurus
 		{
 			switch (Type)
 			{
-				case Asaurus::ShaderDataType::None:
+				case ShaderDataType::None:
 					return 0;
-				case Asaurus::ShaderDataType::Float:
+				case ShaderDataType::Float:
 					return 1;
-				case Asaurus::ShaderDataType::Float2:
+				case ShaderDataType::Float2:
 					return 2;
-				case Asaurus::ShaderDataType::Float3:
+				case ShaderDataType::Float3:
 					return 3;
-				case Asaurus::ShaderDataType::Float4:
+				case ShaderDataType::Float4:
 					return 4;
-				case Asaurus::ShaderDataType::Mat3:
+				case ShaderDataType::Mat3:
 					return 9;
-				case Asaurus::ShaderDataType::Mat4:
+				case ShaderDataType::Mat4:
 					return 16;
-				case Asaurus::ShaderDataType::Int:
+				case ShaderDataType::Int:
 					return 1;
-				case Asaurus::ShaderDataType::int2:
+				case ShaderDataType::int2:
 					return 2;
-				case Asaurus::ShaderDataType::Int3:
+				case ShaderDataType::Int3:
 					return 3;
-				case Asaurus::ShaderDataType::Int4:
+				case ShaderDataType::Int4:
 					return 4;
-				case Asaurus::ShaderDataType::Bool:
+				case ShaderDataType::Bool:
 					return 1;
 				default: 
 				{
@@ -140,7 +140,7 @@ namespace Asaurus
 		virtual void SetLayout(const BufferLayout& layout) = 0;
 		virtual const BufferLayout& GetLayout() const = 0;
 
-		static VertexBuffer* Create(float* vertices, uint32_t size);
+		static Ref<VertexBuffer> Create(float* vertices, uint32_t size);
 	};
 
 	class IndexBuffer
@@ -153,6 +153,6 @@ namespace Asaurus
 
 		virtual uint32_t GetCount() const = 0;
 
-		static IndexBuffer* Create(uint32_t* indices, uint32_t size);
+		static Ref<IndexBuffer> Create(uint32_t* indices, uint32_t size);
 	};
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Asaurus/Core/Core.h"
+
 #ifdef AS_PLATFORM_WINDOWS
 
 extern Asaurus::Application* Asaurus::CreateApplication();
