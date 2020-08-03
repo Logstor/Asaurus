@@ -3,6 +3,7 @@
 /*
  * For use in client application
  */
+#include "Asaurus/Core/Core.h"
 #include "Asaurus/Core/Application.h"
 #include "Asaurus/Core/Log.h"
 #include "Asaurus/Core/Timestep.h"

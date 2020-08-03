@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RenderCommand.h"
+#include "Asaurus/Renderer/RenderCommand.h"
 #include "Asaurus/Renderer/OrthoCamera.h"
 #include "Asaurus/Renderer/Shader.h"
 #include <glm/glm.hpp>
@@ -14,6 +14,7 @@ namespace Asaurus
 	{
 	public:
 		static void Init();
+		static void Shutdown();
 		static void OnWindowResize(uint32_t width, uint32_t height);
 
 		static void BeginScene(OrthoCamera& camera);

@@ -1,5 +1,5 @@
 #include "aspch.h"
-#include "Application.h"
+#include "Asaurus/Core/Application.h"
 #include "Asaurus/Core/Log.h"
 #include "Asaurus/Renderer/Renderer.h"
 
@@ -28,7 +28,10 @@ namespace Asaurus
 		PushOverlay(m_ImGuiLayer);
 	}
 
-	Application::~Application() {}
+	Application::~Application() 
+	{
+		Renderer::Shutdown();
+	}
 
 	void Application::PushLayer(Layer* layer) 
 	{ 
