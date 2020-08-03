@@ -133,17 +133,26 @@ namespace Asaurus
 		std::string result;
 		if (in)
 		{
-			// Make string correct size
+			// Check if file is readable
 			in.seekg(0, std::ios::end);
-			result.resize(in.tellg());
-			in.seekg(0, std::ios::beg);
+			size_t size = in.tellg();
+			if (size != -1)
+			{
+				// Make string correct size
+				result.resize(size);
 
-			// Read in the file
-			in.read(&result[0], result.size());
+				// Read in file
+				in.seekg(0, std::ios::beg);
+				in.read(&result[0], size);
+			}
+			else
+				AS_CORE_ERROR("Couldn't READ from file on path: '{0}'", filepath);
+
+			// Close stream
 			in.close();
-		}
+		}	
 		else
-			AS_CORE_ERROR("Couldn't open file on path: {0}", filepath);
+			AS_CORE_ERROR("Couldn't OPEN file on path: '{0}'", filepath);
 
 		return result;
 	}
