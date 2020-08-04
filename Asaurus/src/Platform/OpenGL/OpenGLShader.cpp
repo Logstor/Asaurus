@@ -147,8 +147,8 @@ namespace Asaurus
 			}
 			else
 				AS_CORE_ERROR("Couldn't READ from file on path: '{0}'", filepath);
-
-			// Close stream
+			
+			// Close stream - Normally handled by RAII
 			in.close();
 		}	
 		else
