@@ -53,6 +53,22 @@
 	#define AS_ENABLE_ASSERTS
 #endif
 
+//////////// Profiling ////////////
+#define AS_PROFILE 1
+
+#if AS_PROFILE
+	#define AS_PROFILE_BEGIN_SESSION(name, filepath) ::Asaurus::Instrumentor::Get().BeginSession(name, filepath)
+	#define AS_PROFILE_END_SESSION() ::Asaurus::Instrumentor::Get().EndSession()
+	#define AS_PROFILE_SCOPE(name) ::Asaurus::InstrumentationTimer timer##__LINE__(name)
+	#define AS_PROFILE_FUNCTION() AS_PROFILE_SCOPE(__FUNCSIG__)
+#else
+	#define AS_PROFILE_BEGIN_SESSION(name, filepath)
+	#define AS_PROFILE_END_SESSION()
+	#define AS_PROFILE_SCOPE(name)
+	#define AS_PROFILE_FUNCTION()
+#endif
+////////////////////////////////////
+
 #ifdef AS_ENABLE_ASSERTS
 	#define AS_ASSERT(x, ...) { if(!(x)) { AS_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 	#define AS_CORE_ASSERT(x, ...) { if(!(x)) { AS_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
