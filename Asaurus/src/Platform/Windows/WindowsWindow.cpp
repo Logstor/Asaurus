@@ -22,16 +22,22 @@ namespace Asaurus
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		AS_PROFILE_FUNCTION();
+
 		Init(props);
 	}
 
 	WindowsWindow::~WindowsWindow()
 	{
+		AS_PROFILE_FUNCTION();
+
 		Shutdown();
 	}
 
 	void WindowsWindow::Init(const WindowProps& props)
 	{
+		AS_PROFILE_FUNCTION();
+
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
@@ -42,6 +48,8 @@ namespace Asaurus
 		// Initialize GLFW if this is the first Window
 		if (s_GLFWWindowCount == 0)
 		{
+			AS_PROFILE_SCOPE("GLFW - Init");
+
 			AS_CORE_INFO("Initializing GLFW");
 			int success = glfwInit();
 			AS_CORE_ASSERT(success, "Could not intialize GLFW!");
@@ -50,8 +58,12 @@ namespace Asaurus
 		}
 
 		// Create GLFW window
-		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		++s_GLFWWindowCount;
+		{
+			AS_PROFILE_SCOPE("GLFW - CreateWindow");
+
+			m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+			++s_GLFWWindowCount;
+		}
 
 		// Create Rendering context
 		m_Context = CreateScope<OpenGLContext>(m_Window);
@@ -67,6 +79,8 @@ namespace Asaurus
 
 	void WindowsWindow::Shutdown()
 	{
+		AS_PROFILE_FUNCTION();
+
 		glfwDestroyWindow(m_Window);
 
 		// No more Windows -> Terminate
@@ -79,12 +93,16 @@ namespace Asaurus
 
 	void WindowsWindow::OnUpdate()
 	{
+		AS_PROFILE_FUNCTION();
+
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)
 	{
+		AS_PROFILE_FUNCTION();
+
 		if (enabled)
 			glfwSwapInterval(1);
 		else

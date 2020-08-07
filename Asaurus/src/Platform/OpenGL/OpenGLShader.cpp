@@ -9,6 +9,8 @@ namespace Asaurus
 {
 	static GLenum ShaderTypeFromString(const std::string& type)
 	{
+		AS_PROFILE_FUNCTION();
+
 		if (type == "vertex") 
 			return GL_VERTEX_SHADER;
 		else if (type == "fragment" || type == "pixel") 
@@ -22,6 +24,8 @@ namespace Asaurus
 
 	OpenGLShader::OpenGLShader(const std::string& path)
 	{
+		AS_PROFILE_FUNCTION();
+
 		std::string shaderSrc = ReadFile(path);
 		auto shaderSources = PreProcess(shaderSrc);
 		Compile(shaderSources);
@@ -37,6 +41,8 @@ namespace Asaurus
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
 		: m_Name(name)
 	{
+		AS_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;
 		sources[GL_FRAGMENT_SHADER] = fragmentSrc;
@@ -45,36 +51,50 @@ namespace Asaurus
 
 	OpenGLShader::~OpenGLShader()
 	{
+		AS_PROFILE_FUNCTION();
+
 		glDeleteProgram(m_RendererID);
 	}
 
 	inline void OpenGLShader::Bind() const
 	{
+		AS_PROFILE_FUNCTION();
+
 		glUseProgram(m_RendererID);
 	}
 
 	inline void OpenGLShader::Unbind() const
 	{
+		AS_PROFILE_FUNCTION();
+
 		glUseProgram(0);
 	}
 
 	void OpenGLShader::SetInt(const std::string& name, const int value)
 	{
+		AS_PROFILE_FUNCTION();
+
 		UploadUniformInt(name, value);
 	}
 
 	void OpenGLShader::SetFloat3(const std::string& name, const glm::vec3& value)
 	{
+		AS_PROFILE_FUNCTION();
+
 		UploadUniformFloat3(name, value);
 	}
 
 	void OpenGLShader::SetFloat4(const std::string& name, const glm::vec4& value)
 	{
+		AS_PROFILE_FUNCTION();
+
 		UploadUniformFloat4(name, value);
 	}
 
 	void OpenGLShader::SetMat4(const std::string& name, const glm::mat4& value)
 	{
+		AS_PROFILE_FUNCTION();
+
 		UploadUniformMat4(name, value);
 	}
 
@@ -127,6 +147,8 @@ namespace Asaurus
 	/// <returns>std::string</returns>
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
+		AS_PROFILE_FUNCTION();
+
 		// Open filestream and check it
 		std::ifstream in(filepath, std::ios::in | std::ios::binary);
 
@@ -159,6 +181,8 @@ namespace Asaurus
 
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
+		AS_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> shaderSources;
 
 		const char* typeToken = "#type";
@@ -188,6 +212,8 @@ namespace Asaurus
 
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
+		AS_PROFILE_FUNCTION();
+
 		// Create Program at first
 		GLuint program = glCreateProgram();
 

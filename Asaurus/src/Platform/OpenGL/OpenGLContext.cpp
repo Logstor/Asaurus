@@ -13,6 +13,8 @@ namespace Asaurus
 
 	void OpenGLContext::Init()
 	{
+		AS_PROFILE_FUNCTION();
+
 		// Initialize Glad
 		glfwMakeContextCurrent(m_WindowHandle);
 		int statusGlad = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
@@ -36,6 +38,8 @@ namespace Asaurus
 
 	void OpenGLContext::SwapBuffers()
 	{
+		AS_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 }

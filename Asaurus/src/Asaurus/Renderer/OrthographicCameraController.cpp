@@ -15,6 +15,8 @@ namespace Asaurus
 
 	void OrthographicCameraController::OnUpdate(Timestep ts)
 	{
+		AS_PROFILE_FUNCTION();
+
 		// Input polling
 		if (Input::IsKeyPressed(AS_KEY_A))
 		{
@@ -60,6 +62,8 @@ namespace Asaurus
 
 	void OrthographicCameraController::OnEvent(Event& e)
 	{
+		AS_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<MouseScrolledEvent>(AS_BIND_EVENT_FN(OrthographicCameraController::OnMouseScolled));
 		dispatcher.Dispatch<WindowResizeEvent>(AS_BIND_EVENT_FN(OrthographicCameraController::OnWindowResized));
@@ -67,6 +71,8 @@ namespace Asaurus
 
 	bool OrthographicCameraController::OnMouseScolled(MouseScrolledEvent& e)
 	{
+		AS_PROFILE_FUNCTION();
+
 		m_ZoomLevel -= e.GetYOffset() * 0.25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, 0.25f);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
@@ -75,6 +81,8 @@ namespace Asaurus
 
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
 	{
+		AS_PROFILE_FUNCTION();
+
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return false;

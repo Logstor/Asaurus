@@ -15,10 +15,12 @@ namespace Asaurus
 
 	Application::Application()
 	{
+		AS_PROFILE_FUNCTION();
+
 		AS_CORE_ASSERT(!s_Instance, "Application already exist!");
 		s_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window = Window::Create();
 		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
 		// Initialize Renderer
@@ -35,16 +37,24 @@ namespace Asaurus
 
 	void Application::PushLayer(Layer* layer) 
 	{ 
+		AS_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer) 
 	{ 
+		AS_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(layer);
+		layer->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e)
 	{
+		AS_PROFILE_FUNCTION();
+
 		// Create Dispatcher and Dispatch
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
@@ -60,11 +70,15 @@ namespace Asaurus
 
 	void Application::Run()
 	{
+		AS_PROFILE_FUNCTION();
+
 		float time;
 		Timestep timestep;
 
 		while (m_Running)
 		{
+			AS_PROFILE_SCOPE("RunLoop");
+
 			time = (float)glfwGetTime(); // Platform::GetTime()
 			timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
@@ -72,14 +86,22 @@ namespace Asaurus
 			// Only render and update if the window isn't minimized
 			if (!m_Minimized)
 			{
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(timestep);
-			}
+				{
+					AS_PROFILE_SCOPE("Update Layers");
 
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(timestep);
+				}
+
+				m_ImGuiLayer->Begin();
+				{
+					AS_PROFILE_SCOPE("LayerStack OnImGuiRender");
+
+					for (Layer* layer : m_LayerStack)
+						layer->OnImGuiRender();
+				}
+				m_ImGuiLayer->End();
+			}
 
 			m_Window->OnUpdate();
 		}
@@ -93,6 +115,8 @@ namespace Asaurus
 
 	bool Application::OnWindowResize(WindowResizeEvent& e)
 	{
+		AS_PROFILE_FUNCTION();
+
 		if (!e.GetWidth() || !e.GetHeight())
 		{
 			m_Minimized = true;

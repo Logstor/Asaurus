@@ -9,22 +9,23 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
+	AS_PROFILE_FUNCTION();
+
 	m_CheckerboardTexture = Asaurus::Texture2D::Create("assets/textures/Checkerboard.png");
 }
 
 void Sandbox2D::OnDetach() 
-{}
+{
+	AS_PROFILE_FUNCTION();
+
+}
 
 void Sandbox2D::OnUpdate(Asaurus::Timestep timestep) 
 {
 	AS_PROFILE_FUNCTION();
 
 	// Update
-	{
-		AS_PROFILE_SCOPE("CameraController::OnUpdate");
-
-		m_CameraController.OnUpdate(timestep);
-	}
+	m_CameraController.OnUpdate(timestep);
 
 	// Rendering
 	{

@@ -22,6 +22,8 @@ namespace Asaurus
 
 	void ImGuiLayer::OnAttach() 
 	{
+		AS_PROFILE_FUNCTION();
+
 		// Setup Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
@@ -55,6 +57,8 @@ namespace Asaurus
 
 	void ImGuiLayer::OnDetach() 
 	{
+		AS_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
 		ImGui::DestroyContext();
@@ -62,6 +66,8 @@ namespace Asaurus
 
 	void ImGuiLayer::Begin()
 	{
+		AS_PROFILE_FUNCTION();
+
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -69,6 +75,8 @@ namespace Asaurus
 
 	void ImGuiLayer::End()
 	{
+		AS_PROFILE_FUNCTION();
+
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
