@@ -27,6 +27,7 @@ namespace Asaurus
         InstrumentationSession* m_CurrentSession;
         std::ofstream m_OutputStream;
         int m_ProfileCount;
+        std::string m_Remove[2] = { "__cdecl ", "void " };
 
     public:
         Instrumentor()
@@ -55,8 +56,15 @@ namespace Asaurus
             if (m_ProfileCount++ > 0)
                 m_OutputStream << ",";
 
+            // Cleanse name
             std::string name = result.Name;
             std::replace(name.begin(), name.end(), '"', '\'');
+            for (std::string toRemove : m_Remove)
+            {
+                size_t pos = name.find(toRemove);
+                if (pos != std::string::npos)
+                    name.erase(pos, toRemove.size());
+            }
 
             m_OutputStream << "{";
             m_OutputStream << "\"cat\":\"function\",";
