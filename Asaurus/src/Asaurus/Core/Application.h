@@ -12,6 +12,8 @@
 
 #include "Asaurus/ImGui/ImGuiLayer.h"
 
+int main(int argc, char** argv);
+
 namespace Asaurus
 {
 	class Application
@@ -22,8 +24,6 @@ namespace Asaurus
 
 		virtual ~Application();
 
-		void Run();
-
 		void OnEvent(Event& e);
 
 		void PushLayer(Layer* layer);
@@ -33,6 +33,7 @@ namespace Asaurus
 		inline static Application& Get() { return *s_Instance; }
 
 	private:
+		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 
@@ -41,7 +42,9 @@ namespace Asaurus
 		ImGuiLayer* m_ImGuiLayer;
 		LayerStack m_LayerStack;
 		float m_LastFrameTime;
+
 		static Application* s_Instance;
+		friend int ::main(int argc, char** argv);
 
 		bool m_Minimized	= false;
 		bool m_Running		= true;
