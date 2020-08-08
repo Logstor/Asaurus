@@ -6,8 +6,6 @@
 
 namespace Asaurus
 {
-	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
-
 	bool WindowsInput::IsKeyPressedImpl(KeyCode key) const
 	{
 		// We know it's a GLFWwindow
