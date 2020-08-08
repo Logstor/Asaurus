@@ -1,29 +1,28 @@
 #pragma once
 
-#include "Event.h"
+#include "Asaurus/Events/Event.h"
+#include "Asaurus/Core/KeyCodes.h"
 
 namespace Asaurus
 {
 	class KeyEvent : public Event
 	{
 	public:
-		inline int GetKeyCode() const { return m_KeyCode; }
+		inline KeyCode GetKeyCode() const { return m_Key; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
-		KeyEvent(int keycode)
-			: m_KeyCode(keycode)
-		{
-		}
+		KeyEvent(KeyCode key)
+			: m_Key(key) {}
 
-		int m_KeyCode;
+		KeyCode m_Key;
 	};
 
 	class KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keycode, int repeatCount)
-			: KeyEvent(keycode), m_RepeatCount(repeatCount)
+		KeyPressedEvent(KeyCode key, int repeatCount)
+			: KeyEvent(key), m_RepeatCount(repeatCount)
 		{
 		}
 
@@ -32,7 +31,7 @@ namespace Asaurus
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << m_KeyCode << " (" << m_RepeatCount << " repeats)";
+			ss << "KeyPressedEvent: " << m_Key << " (" << m_RepeatCount << " repeats)";
 			return ss.str();
 		}
 
@@ -44,15 +43,15 @@ namespace Asaurus
 	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(int keycode)
-			: KeyEvent(keycode)
+		KeyReleasedEvent(KeyCode key)
+			: KeyEvent(key)
 		{
 		}
 
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyReleasedEvent: " << m_KeyCode;
+			ss << "KeyReleasedEvent: " << m_Key;
 			return ss.str();
 		}
 
@@ -62,13 +61,13 @@ namespace Asaurus
 	class KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(int keycode)
-			: KeyEvent(keycode) {}
+		KeyTypedEvent(KeyCode key)
+			: KeyEvent(key) {}
 
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyTypedEvent: " << m_KeyCode;
+			ss << "KeyTypedEvent: " << m_Key;
 			return ss.str();
 		}
 

@@ -5,6 +5,7 @@
 #include "Asaurus/Events/KeyEvent.h"
 #include "Asaurus/Events/MouseEvent.h"
 #include "Asaurus/Renderer/Renderer.h"
+#include "Asaurus/Core/Input.h"
 
 namespace Asaurus
 {
@@ -151,28 +152,30 @@ namespace Asaurus
 				{
 					case GLFW_PRESS:
 					{
-						KeyPressedEvent e(key, 0);
+						KeyPressedEvent e(static_cast<KeyCode>(key), 0);
 						data.EventCallback(e);
 						break;
 					}
 
 					case GLFW_REPEAT:
 					{
-						KeyPressedEvent e(key, 1);
+						KeyPressedEvent e(static_cast<KeyCode>(key), 1);
 						data.EventCallback(e);
 						break;
 					}
 
 					case GLFW_RELEASE:
 					{
-						KeyReleasedEvent e(key);
+						KeyReleasedEvent e(static_cast<KeyCode>(key));
 						data.EventCallback(e);
 						break;
 					}
 
 					default:
+					{
 						AS_CORE_WARN("Key action wasn't recognized: {0}", action);
 						break;
+					}
 				}
 			});
 
@@ -180,7 +183,7 @@ namespace Asaurus
 			{
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
-				KeyTypedEvent e(keycode);
+				KeyTypedEvent e(static_cast<KeyCode>(keycode));
 				data.EventCallback(e);
 			});
 
@@ -192,21 +195,23 @@ namespace Asaurus
 				{
 					case GLFW_PRESS:
 					{
-						MouseButtonPressedEvent e(button);
+						MouseButtonPressedEvent e(static_cast<MouseCode>(button));
 						data.EventCallback(e);
 						break;
 					}
 
 					case GLFW_RELEASE:
 					{
-						MouseButtonReleasedEvent e(button);
+						MouseButtonReleasedEvent e(static_cast<MouseCode>(button));
 						data.EventCallback(e);
 						break;
 					}
 
 					default:
+					{
 						AS_CORE_WARN("Mouse action wasn't recognized: {0}", action);
 						break;
+					}
 				}
 			});
 

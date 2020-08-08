@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Event.h"
+#include "Asaurus/Events/Event.h"
+#include "Asaurus/Core/Input.h"
 
 namespace Asaurus
 {
@@ -22,6 +23,7 @@ namespace Asaurus
 
 		EVENT_CLASS_TYPE(MouseMoved)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+
 	private:
 		float m_MouseX, m_MouseY;
 	};
@@ -45,6 +47,7 @@ namespace Asaurus
 
 		EVENT_CLASS_TYPE(MouseScrolled)
 			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+
 	private:
 		float m_XOffset, m_YOffset;
 	};
@@ -53,23 +56,23 @@ namespace Asaurus
 	class MouseButtonEvent : public Event
 	{
 	public:
-		inline int GetMouseButton() const { return m_Button; }
+		inline MouseCode GetMouseButton() const { return m_Button; }
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
-	protected:
-		MouseButtonEvent(int button)
-			: m_Button(button)
-		{
-		}
 
-		int m_Button;
+	protected:
+		MouseButtonEvent(MouseCode button)
+			: m_Button(button)
+		{ }
+
+		MouseCode m_Button;
 	};
 
 
 	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(int button)
+		MouseButtonPressedEvent(MouseCode button)
 			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override
@@ -86,7 +89,7 @@ namespace Asaurus
 	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(int button)
+		MouseButtonReleasedEvent(MouseCode button)
 			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override

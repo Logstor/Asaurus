@@ -8,24 +8,24 @@ namespace Asaurus
 {
 	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
 
-	bool WindowsInput::IsKeyPressedImpl(int keycode) const
+	bool WindowsInput::IsKeyPressedImpl(KeyCode key) const
 	{
 		// We know it's a GLFWwindow
 		GLFWwindow* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 
 		// Get the state
-		int state = glfwGetKey(window, keycode);
+		int state = glfwGetKey(window, static_cast<uint32_t>(key));
 
 		// true if it's down in any way
 		return state == GLFW_PRESS || state == GLFW_REPEAT;
 	}
 
-	bool WindowsInput::IsMouseButtonPressedImpl(int button) const
+	bool WindowsInput::IsMouseButtonPressedImpl(MouseCode button) const
 	{
 		// We know it's a GLFWwindow
 		GLFWwindow* window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 
-		int state = glfwGetMouseButton(window, button);
+		int state = glfwGetMouseButton(window, static_cast<uint32_t>(button));
 
 		return state == GLFW_PRESS;
 	}

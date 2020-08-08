@@ -15,7 +15,7 @@
 // ------------ IO ---------------------
 #include "Asaurus/Core/Input.h"
 #include "Asaurus/Core/KeyCodes.h"
-#include "Asaurus/Core/MouseButtonCodes.h"
+#include "Asaurus/Core/MouseCodes.h"
 #include "Asaurus/Renderer/OrthographicCameraController.h"
 
 // ------------ Graphics ---------------
