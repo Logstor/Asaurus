@@ -4,6 +4,7 @@
 #include "Asaurus/Events/ApplicationEvent.h"
 #include "Asaurus/Events/KeyEvent.h"
 #include "Asaurus/Events/MouseEvent.h"
+#include "Asaurus/Renderer/Renderer.h"
 
 namespace Asaurus
 {
@@ -60,6 +61,11 @@ namespace Asaurus
 		// Create GLFW window
 		{
 			AS_PROFILE_SCOPE("GLFW - CreateWindow");
+
+		#if defined(AS_DEBUG)
+			if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
+				glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+		#endif
 
 			m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 			++s_GLFWWindowCount;
