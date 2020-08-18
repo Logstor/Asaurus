@@ -5,6 +5,29 @@
 
 namespace Asaurus
 {
+	Ref<VertexBuffer> VertexBuffer::Create(size_t size)
+	{
+		switch (Renderer::GetAPI())
+		{
+			case RendererAPI::API::OpenGL:
+			{
+				return CreateRef<OpenGLVertexBuffer>(size);
+			}
+
+			case RendererAPI::API::None:
+			{
+				AS_CORE_ASSERT(false, "RendererAPI::None is not supported: VertexBuffer::Create");
+				return nullptr;
+			}
+
+			default:
+			{
+				AS_CORE_ASSERT(false, "RendererAPI not recognized: VertexBuffer::Create");
+				return nullptr;
+			}
+		}
+	}
+
 	Ref<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)
 	{
 		switch (Renderer::GetAPI())

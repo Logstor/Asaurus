@@ -7,6 +7,25 @@ namespace Asaurus
 	/*
 	 * ****** OpenGLVertexBuffer ******
 	 */
+
+	/// <summary>
+	/// Creates a VertexBuffer used for Dynamic drawing.
+	/// </summary>
+	/// <param name="size">size_t</param>
+	OpenGLVertexBuffer::OpenGLVertexBuffer(size_t size)
+	{
+		AS_PROFILE_FUNCTION();
+
+		glCreateBuffers(1, &m_RendererID);
+		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
+		glBufferData(GL_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);
+	}
+
+	/// <summary>
+	/// Create a VertexBuffer used for Static drawing.
+	/// </summary>
+	/// <param name="vertices"></param>
+	/// <param name="size"></param>
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
 	{
 		AS_PROFILE_FUNCTION();
@@ -35,6 +54,12 @@ namespace Asaurus
 		AS_PROFILE_FUNCTION();
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+
+	void OpenGLVertexBuffer::SetData(const void* data, size_t size)
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, size, data);
 	}
 
 	/*
