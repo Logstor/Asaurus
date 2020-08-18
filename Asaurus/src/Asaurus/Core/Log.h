@@ -34,4 +34,4 @@ namespace Asaurus
 #define AS_INFO(...)		::Asaurus::Log::GetClientLogger()->info(__VA_ARGS__)
 #define AS_WARN(...)		::Asaurus::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define AS_ERROR(...)		::Asaurus::Log::GetClientLogger()->error(__VA_ARGS__)
-#define HZ_CRIT(...)		::Asaurus::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define AS_CRIT(...)		::Asaurus::Log::GetClientLogger()->critical(__VA_ARGS__)
